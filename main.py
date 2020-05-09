@@ -9,6 +9,33 @@ font = ('Verdana', 22, 'bold')
 
 # utility functions
 
+def buttonClick(event):
+    #print("Button Clicked")
+    b = event.widget
+    text = b['text']
+
+    if(text == '='):
+        try:
+            expression = textField.get()
+            answer = eval(expression)
+            textField.delete(0, END)
+            textField.insert(0,  answer)
+        except Exception as e:
+            print("Error")
+            showerror('Error', e)
+        return
+
+    textField.insert(END, text)
+
+def allClear():
+     textField.delete(0, END)
+
+def clear():
+    expression = textField.get()
+    expression = expression[0:len(expression) - 1]
+    textField.delete(0, END)
+    textField.insert(0,  expression)
+
 
 # creating a window
 
@@ -46,6 +73,7 @@ for i in range(3):
         button = Button(frame, text = btnValue, font=font, width = 5, height=2, relief='sunken', activebackground='red', activeforeground='white')
         button.grid(row=i, column=j, padx=3, pady=3)
         btnValue+=1
+        button.bind(' <Button-1>', buttonClick)
 
 dotbutton = Button(frame, text = ".", font=font, width = 5, height=2, relief='sunken')
 dotbutton.grid(row=3, column=0, padx=3, pady=3)
@@ -68,11 +96,22 @@ multiplyButton.grid(row=2, column=3, padx=3, pady=3)
 divideButton = Button(frame, text = "/", font=font, width = 5, height=2, relief='sunken')
 divideButton.grid(row=3, column=3, padx=3, pady=3)
 
-clearButton = Button(frame, text = "C", font=font, width = 11, height=2, relief='sunken')
+clearButton = Button(frame, text = "C", font=font, width = 11, height=2, relief='sunken', command=clear)
 clearButton.grid(row= 4, column=0, columnspan=2, padx=3, pady=3)
 
-allClearButton = Button(frame, text = "AC", font=font, width = 11, height=2, relief='sunken')
+allClearButton = Button(frame, text = "AC", font=font, width = 11, height=2, relief='sunken', command=allClear)
 allClearButton.grid(row=4, column=2, columnspan=2, padx=3, pady=3)
+
+
+# binding rest of the buttons
+
+dotbutton.bind(' <Button-1>', buttonClick)
+zerobutton.bind(' <Button-1>', buttonClick)
+equalbutton.bind(' <Button-1>', buttonClick)
+plusButton.bind(' <Button-1>', buttonClick)
+minusButton.bind(' <Button-1>', buttonClick)
+multiplyButton.bind(' <Button-1>', buttonClick)
+divideButton.bind('<Button-1>', buttonClick)
 
 
 window.mainloop()
