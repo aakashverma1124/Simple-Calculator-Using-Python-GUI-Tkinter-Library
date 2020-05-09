@@ -4,5 +4,8 @@ This repository contains the code for simple calculator using one of the python 
 
 The screenshot will help you in understading the flow of code.
 
+## Image 1
 <img src = 'img/cal1.png'>
+
+## Image 2
 <img src = 'img/cal1.png'>
