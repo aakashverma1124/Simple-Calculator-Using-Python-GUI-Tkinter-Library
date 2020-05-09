@@ -8,4 +8,4 @@ The screenshot will help you in understading the flow of code.
 <img src = 'img/cal1.png'>
 
 ## Image 2
-<img src = 'img/cal1.png'>
+<img src = 'img/cal2.png'>
