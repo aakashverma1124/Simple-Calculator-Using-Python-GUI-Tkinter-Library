@@ -33,9 +33,10 @@ def buttonClick(event):
             answer = eval(expression)
             textField.delete(0, END)
             textField.insert(0,  answer)
-        except Exception as e:
-            print("Error")
-            showerror('Error', e)
+        except ZeroDivisionError:
+            showerror("You can't divide the number by 0.")
+        except Exception:
+            showerror('Oops! The expression is invalid.')
         return
 
     textField.insert(END, text)
